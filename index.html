@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vowed — Commit to yourself. Prove it.</title>
+  <meta name="description" content="Vowed uses financial commitment to help you actually achieve your goals. Stake coins, prove it with a photo, get refunded when you succeed." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0f0f0f;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #c8f65a;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-cta {
+      background: #c8f65a;
+      color: #0f0f0f;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: #c8f65a;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span { color: #c8f65a; }
+
+    .hero p {
+      font-size: 18px;
+      color: #888;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #c8f65a;
+      color: #0f0f0f;
+      padding: 14px 32px;
+      border-radius: 32px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 32px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border: 1px solid #2a2a2a;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: #c8f65a; }
+
+    /* TAGLINE */
+    .tagline-section {
+      background: #1a1a1a;
+      border-top: 1px solid #2a2a2a;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .tagline-section blockquote {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 600;
+      max-width: 680px;
+      margin: 0 auto;
+      color: #ffffff;
+      font-style: normal;
+    }
+
+    .tagline-section blockquote em {
+      color: #c8f65a;
+      font-style: normal;
+    }
+
+    /* HOW IT WORKS */
+    .section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #c8f65a;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .step {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      background: #c8f65a;
+      color: #0f0f0f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .feature-emoji {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* PSYCHOLOGY */
+    .psychology {
+      background: #1a1a1a;
+      border-top: 1px solid #2a2a2a;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 80px 20px;
+    }
+
+    .psychology-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .psychology-inner h2 {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .psychology-inner p {
+      font-size: 17px;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    .psychology-inner p strong {
+      color: #ffffff;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      color: #888;
+      margin-bottom: 36px;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .email-form input {
+      flex: 1;
+      min-width: 220px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: #ffffff;
+      padding: 14px 18px;
+      border-radius: 32px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .email-form input:focus { border-color: #c8f65a; }
+    .email-form input::placeholder { color: #555; }
+
+    .email-form button {
+      background: #c8f65a;
+      color: #0f0f0f;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 32px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .email-form button:hover { opacity: 0.85; }
+
+    .form-note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p { font-size: 13px; color: #555; }
+    footer a { color: #555; text-decoration: none; font-size: 13px; }
+    footer a:hover { color: #c8f65a; }
+    .footer-links { display: flex; gap: 20px; }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Vowed</div>
+    <a href="#notify" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🚀 Coming to the App Store</div>
+    <h1>Commit to yourself.<br /><span>Prove it.</span></h1>
+    <p>Vowed turns your goals into financial commitments. Stake coins, show real proof, and get fully refunded when you succeed. No excuses.</p>
+    <div class="hero-buttons">
+      <a href="#notify" class="btn-primary">Notify Me at Launch</a>
+      <a href="#how" class="btn-secondary">How it works</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TAGLINE -->
+  <div class="tagline-section">
+    <blockquote>
+      "You already know what to do.<br />
+      The problem is <em>showing up.</em>"
+    </blockquote>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="section-label">How it works</div>
+    <h2>Three steps to real accountability</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Stake coins on your goal</h3>
+        <p>Set a goal and commit coins to it. The higher the stake, the stronger the commitment.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Prove it with a photo</h3>
+        <p>No shortcuts. Take a real-time photo as proof. Our community jury reviews it honestly.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Get your coins back</h3>
+        <p>Succeed and get fully refunded. Fail and lose your stake. That's what makes it real.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-label">Features</div>
+    <h2>Built for real commitment</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-emoji">⚖️</div>
+        <h3>Community Jury</h3>
+        <p>Real users review your proof photos and vote honestly. 3 approvals and you're in — 3 rejections and you're out.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-emoji">🤖</div>
+        <h3>AI Coach</h3>
+        <p>Powered by Claude. Get a personalized training plan, diet advice, or motivation — in any language.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-emoji">⚔️</div>
+        <h3>Duel Mode</h3>
+        <p>Challenge a friend to the same goal. Each side wins or loses independently. Social pressure that actually works.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-emoji">🔥</div>
+        <h3>Streak Tracking</h3>
+        <p>Daily, weekly, and monthly goals with streak counters. Watch your consistency compound over time.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-emoji">🌍</div>
+        <h3>Multi-language</h3>
+        <p>Available in 7 languages. The jury matches your language so reviews are always fair and relevant.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-emoji">🔔</div>
+        <h3>Smart Reminders</h3>
+        <p>Set daily reminders at your chosen time. Never miss a day because you forgot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PSYCHOLOGY -->
+  <div class="psychology">
+    <div class="psychology-inner">
+      <h2>Why it actually works</h2>
+      <p>
+        People hire personal trainers not for the knowledge — <strong>but because they paid for it.</strong>
+        That payment creates a commitment that willpower alone can't.
+        <br /><br />
+        Vowed brings the same psychology to any goal. When you have something real to lose,
+        <strong>you show up.</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section" id="notify">
+    <h2>Be the first to know</h2>
+    <p>Vowed is launching on the App Store soon. Drop your email and we'll notify you the moment it's live.</p>
+    <div class="email-form">
+      <input type="email" placeholder="your@email.com" id="emailInput" />
+      <button onclick="handleSubmit()">Notify Me</button>
+    </div>
+    <p class="form-note">No spam. Just a single launch email.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Vowed. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="./privacy-policy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit() {
+      const email = document.getElementById('emailInput').value;
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      // Şimdilik basit alert, ileride Supabase'e bağlanır
+      alert('Thanks! We\'ll notify you when Vowed launches 🚀');
+      document.getElementById('emailInput').value = '';
+    }
+
+    document.getElementById('emailInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleSubmit();
+    });
+  </script>
+
+</body>
+</html>
